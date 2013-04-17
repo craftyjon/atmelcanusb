@@ -5,18 +5,43 @@
 #include "atmelcanusb.h"
 
 
-// This is an example of an exported variable
-ATMELCANUSB_API int natmelcanusb=0;
-
-// This is an example of an exported function.
-ATMELCANUSB_API int fnatmelcanusb(void)
+ATMELCANUSB_API void MctAdapter_Create()
 {
-	return 42;
+
 }
 
-// This is the constructor of a class that has been exported.
-// see atmelcanusb.h for the class definition
-Catmelcanusb::Catmelcanusb()
+
+ATMELCANUSB_API void MctAdapter_Release()
 {
-	return;
+
+}
+
+
+ATMELCANUSB_API bool MctAdapter_Open(char* bitrate)
+{
+
+}
+
+
+ATMELCANUSB_API bool MctAdapter_IsOpen()
+{
+
+}
+
+
+ATMELCANUSB_API bool MctAdapter_SendMessage(unsigned int id, unsigned char length, unsigned char *data)
+{
+
+}
+
+
+ATMELCANUSB_API bool MctAdapter_ReceiveMessage(unsigned int *id, unsigned char *length, unsigned char *data)
+{
+
+}
+
+
+ATMELCANUSB_API bool MctAdapter_Close()
+{
+
 }

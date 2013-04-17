@@ -1,22 +1,23 @@
-// The following ifdef block is the standard way of creating macros which make exporting 
-// from a DLL simpler. All files within this DLL are compiled with the ATMELCANUSB_EXPORTS
-// symbol defined on the command line. this symbol should not be defined on any project
-// that uses this DLL. This way any other project whose source files include this file see 
-// ATMELCANUSB_API functions as being imported from a DLL, whereas this DLL sees symbols
-// defined with this macro as being exported.
 #ifdef ATMELCANUSB_EXPORTS
 #define ATMELCANUSB_API __declspec(dllexport)
 #else
 #define ATMELCANUSB_API __declspec(dllimport)
 #endif
 
-// This class is exported from the atmelcanusb.dll
-class ATMELCANUSB_API Catmelcanusb {
-public:
-	Catmelcanusb(void);
-	// TODO: add your methods here.
-};
+// I am using the names from the Mictronics DLL because
+// this one is supported as "DIY" adapter in T5Suite.
+// I can't rebuild T5Suite as easily due to library dependencies.
 
-extern ATMELCANUSB_API int natmelcanusb;
+ATMELCANUSB_API void MctAdapter_Create(void);
 
-ATMELCANUSB_API int fnatmelcanusb(void);
+ATMELCANUSB_API void MctAdapter_Release(void);
+
+ATMELCANUSB_API bool MctAdapter_Open(char* bitrate);
+
+ATMELCANUSB_API bool MctAdapter_IsOpen(void);
+
+ATMELCANUSB_API bool MctAdapter_SendMessage(unsigned int id, unsigned char length, unsigned char *data);
+
+ATMELCANUSB_API bool MctAdapter_ReceiveMessage(unsigned int *id, unsigned char *length, unsigned char *data);
+
+ATMELCANUSB_API bool MctAdapter_Close(void);
